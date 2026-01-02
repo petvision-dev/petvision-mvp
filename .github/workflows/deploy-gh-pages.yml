@@ -37,11 +37,18 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
+      - name: Configure app.json for GitHub Pages
+        run: |
+          # Update app.json with GitHub Pages specific settings
+          node -e "
+            const fs = require('fs');
+            const config = JSON.parse(fs.readFileSync('app.json', 'utf8'));
+            config.expo.web.baseUrl = '/petvision-mvp';
+            fs.writeFileSync('app.json', JSON.stringify(config, null, 2));
+          "
+
       - name: Build Expo web app
         run: npx expo export --platform web
-        env:
-          # Set the base path for GitHub Pages
-          EXPO_PUBLIC_BASE_PATH: /petvision-mvp
 
       - name: Create 404.html for SPA routing
         run: cp ./dist/index.html ./dist/404.html

@@ -16,12 +16,6 @@ export default function Root({ children }: { children: React.ReactNode }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="theme-color" content="#0df2a6" />
 
-        {/* PWA Manifest */}
-        <link rel="manifest" href="/petvision-mvp/manifest.json" />
-        
-        {/* Apple Touch Icon */}
-        <link rel="apple-touch-icon" href="/petvision-mvp/assets/images/icon.png" />
-
         {/* 
           Disable body scrolling on web. This makes ScrollView components work closer to how they do on native. 
           However, body scrolling is often nice to have for mobile web. If you want to enable it, remove this line.

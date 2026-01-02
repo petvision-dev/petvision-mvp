@@ -5,7 +5,12 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import { View, ActivityIndicator, StyleSheet, Platform } from 'react-native';
-import 'react-native-reanimated';
+import {
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_700Bold,
+  Inter_800ExtraBold,
+} from '@expo-google-fonts/inter';
 
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -24,8 +29,13 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  // Load ALL fonts in one place
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_700Bold,
+    Inter_800ExtraBold,
     ...FontAwesome.font,
   });
 
@@ -34,11 +44,7 @@ export default function RootLayout() {
     if (error) {
       console.error('Font loading error:', error);
       // On web, we should still render even if fonts fail
-      if (Platform.OS === 'web') {
-        SplashScreen.hideAsync();
-      } else {
-        throw error;
-      }
+      SplashScreen.hideAsync();
     }
   }, [error]);
 
@@ -48,7 +54,13 @@ export default function RootLayout() {
     }
   }, [loaded]);
 
-  // Show loading indicator while fonts load (instead of null)
+  // On web, don't block rendering - fonts will load async
+  if (Platform.OS === 'web') {
+    // Always render on web to avoid blank page
+    return <RootLayoutNav fontsLoaded={loaded} />;
+  }
+
+  // Show loading indicator while fonts load (native only)
   if (!loaded && !error) {
     return (
       <View style={styles.loadingContainer}>
@@ -57,10 +69,10 @@ export default function RootLayout() {
     );
   }
 
-  return <RootLayoutNav />;
+  return <RootLayoutNav fontsLoaded={loaded} />;
 }
 
-function RootLayoutNav() {
+function RootLayoutNav({ fontsLoaded }: { fontsLoaded: boolean }) {
   const colorScheme = useColorScheme();
 
   return (

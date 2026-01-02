@@ -11,7 +11,7 @@
     "splash": {
       "image": "./assets/images/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#10221c"
     },
     "ios": {
       "supportsTablet": true
@@ -19,7 +19,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#10221c"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false
@@ -27,18 +27,15 @@
     "web": {
       "favicon": "./assets/images/favicon.png",
       "bundler": "metro",
-      "output": "static",
+      "output": "single",
       "name": "Pet Care MVP",
       "shortName": "PetCare",
       "description": "A mobile-first pet care application",
       "lang": "en",
-      "scope": "/petvision-mvp/",
       "themeColor": "#0df2a6",
-      "backgroundColor": "#f5f8f7",
-      "startUrl": "/petvision-mvp/?utm_source=pwa",
+      "backgroundColor": "#10221c",
       "display": "standalone",
-      "orientation": "portrait",
-      "baseUrl": "/petvision-mvp"
+      "orientation": "portrait"
     },
     "plugins": [
       "expo-router"

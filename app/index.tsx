@@ -1,31 +1,13 @@
-import { StyleSheet, View, Text, Image, TouchableOpacity, ImageBackground, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, ImageBackground } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { useTheme } from '@/components/ThemeProvider';
-import { useFonts, Inter_400Regular, Inter_500Medium, Inter_700Bold, Inter_800ExtraBold } from '@expo-google-fonts/inter';
 import { MaterialIcons } from '@expo/vector-icons';
 
 export default function WelcomeScreen() {
   const { theme, isDark } = useTheme();
   const router = useRouter();
-  
-  // Load the Inter font
-  const [fontsLoaded, fontError] = useFonts({
-    Inter_400Regular,
-    Inter_500Medium,
-    Inter_700Bold,
-    Inter_800ExtraBold,
-  });
-
-  // Show loading indicator while fonts load
-  if (!fontsLoaded && !fontError) {
-    return (
-      <View style={[styles.container, styles.loadingContainer]}>
-        <ActivityIndicator size="large" color="#0df2a6" />
-      </View>
-    );
-  }
 
   return (
     <View style={styles.container}>
@@ -217,9 +199,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontFamily: 'Inter_700Bold',
     color: '#fff',
-  },
-  loadingContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
   },
 });
