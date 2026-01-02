@@ -1,12 +1,10 @@
 # GitHub Actions workflow to build and deploy Expo web app to Cloudflare Pages
 # This is a simpler alternative to GitHub Pages for PWA deployment
+# NOTE: This workflow only runs manually - configure secrets first, then trigger from Actions tab
 name: Deploy to Cloudflare Pages
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  # Only manual trigger - don't run automatically
   workflow_dispatch:
 
 jobs:
