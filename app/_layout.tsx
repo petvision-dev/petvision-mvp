@@ -4,25 +4,22 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
-import { View, ActivityIndicator, StyleSheet, Platform } from 'react-native';
+import { View, ActivityIndicator, StyleSheet, Platform, Text } from 'react-native';
 import {
   Inter_400Regular,
   Inter_500Medium,
   Inter_700Bold,
   Inter_800ExtraBold,
 } from '@expo-google-fonts/inter';
-import { ClerkProvider } from '@clerk/clerk-expo';
-import { tokenCache } from '@clerk/clerk-expo/token-cache';
+import { ClerkProvider, ClerkLoaded } from '@clerk/clerk-expo';
 
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { useColorScheme } from '@/components/useColorScheme';
 
-const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
+const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY;
 
 if (!publishableKey) {
-  throw new Error(
-    'Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env'
-  );
+  console.error('Missing EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY');
 }
 
 export {
@@ -85,17 +82,32 @@ export default function RootLayout() {
 function RootLayoutNav({ fontsLoaded }: { fontsLoaded: boolean }) {
   const colorScheme = useColorScheme();
 
-  return (
-    <ClerkProvider publishableKey={publishableKey} tokenCache={tokenCache}>
+  // Don't render if no publishable key
+  if (!publishableKey) {
+    return (
       <ThemeProvider>
-        <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-          <Stack.Screen name="onboarding/pet-profile" options={{ headerShown: false }} />
-          <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-        </Stack>
+        <View style={styles.loadingContainer}>
+          <Text style={{ color: '#fff', textAlign: 'center', padding: 20 }}>
+            Missing Clerk Publishable Key. Please check environment variables.
+          </Text>
+        </View>
       </ThemeProvider>
+    );
+  }
+
+  return (
+    <ClerkProvider publishableKey={publishableKey}>
+      <ClerkLoaded>
+        <ThemeProvider>
+          <Stack>
+            <Stack.Screen name="index" options={{ headerShown: false }} />
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+            <Stack.Screen name="onboarding/pet-profile" options={{ headerShown: false }} />
+            <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+          </Stack>
+        </ThemeProvider>
+      </ClerkLoaded>
     </ClerkProvider>
   );
 }
