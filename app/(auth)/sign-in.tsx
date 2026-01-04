@@ -9,12 +9,21 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  Alert
 } from 'react-native';
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useTheme } from '@/components/ThemeProvider';
 import { MaterialIcons } from '@expo/vector-icons';
+
+// Web-compatible alert
+const showAlert = (title: string, message: string) => {
+  if (Platform.OS === 'web') {
+    window.alert(`${title}: ${message}`);
+  } else {
+    const { Alert } = require('react-native');
+    Alert.alert(title, message);
+  }
+};
 
 export default function SignInScreen() {
   const { signIn, setActive, isLoaded } = useSignIn();
@@ -23,10 +32,15 @@ export default function SignInScreen() {
 
   const [emailAddress, setEmailAddress] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [error, setError] = React.useState('');
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   // Handle the submission of the sign-in form
   const onSignInPress = async () => {
-    if (!isLoaded) return;
+    if (!isLoaded || isSubmitting) return;
+    
+    setError('');
+    setIsSubmitting(true);
 
     // Start the sign-in process using the email and password provided
     try {
@@ -44,13 +58,19 @@ export default function SignInScreen() {
         // If the status isn't complete, check why. User might need to
         // complete further steps.
         console.error(JSON.stringify(signInAttempt, null, 2));
-        Alert.alert('Error', 'Sign in incomplete. Please try again.');
+        const errorMessage = 'Sign in incomplete. Please try again.';
+        setError(errorMessage);
+        showAlert('Error', errorMessage);
       }
     } catch (err: any) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
       console.error(JSON.stringify(err, null, 2));
-      Alert.alert('Error', err.errors?.[0]?.message || 'Failed to sign in');
+      const errorMessage = err.errors?.[0]?.message || 'Failed to sign in';
+      setError(errorMessage);
+      showAlert('Error', errorMessage);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -71,13 +91,17 @@ export default function SignInScreen() {
               Sign in to continue caring for your pet
             </Text>
 
+            {error ? (
+              <Text style={[styles.errorText, { color: theme.error }]}>{error}</Text>
+            ) : null}
+
             <TextInput
               style={[
                 styles.input,
                 { 
                   backgroundColor: theme.surface,
                   color: theme.textMain,
-                  borderColor: theme.border
+                  borderColor: error ? theme.error : theme.border
                 }
               ]}
               autoCapitalize="none"
@@ -95,7 +119,7 @@ export default function SignInScreen() {
                 { 
                   backgroundColor: theme.surface,
                   color: theme.textMain,
-                  borderColor: theme.border
+                  borderColor: error ? theme.error : theme.border
                 }
               ]}
               value={password}
@@ -107,10 +131,11 @@ export default function SignInScreen() {
             />
 
             <TouchableOpacity 
-              style={[styles.button, { backgroundColor: theme.primary }]}
+              style={[styles.button, { backgroundColor: theme.primary, opacity: isSubmitting ? 0.7 : 1 }]}
               onPress={onSignInPress}
+              disabled={isSubmitting}
             >
-              <Text style={styles.buttonText}>Sign In</Text>
+              <Text style={styles.buttonText}>{isSubmitting ? 'Signing In...' : 'Sign In'}</Text>
             </TouchableOpacity>
 
             <View style={styles.footer}>
@@ -158,6 +183,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter_400Regular',
     textAlign: 'center',
     marginBottom: 32,
+  },
+  errorText: {
+    fontSize: 14,
+    fontFamily: 'Inter_400Regular',
+    textAlign: 'center',
+    marginBottom: 16,
+    paddingHorizontal: 16,
   },
   input: {
     width: '100%',

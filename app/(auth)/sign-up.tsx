@@ -8,13 +8,22 @@ import {
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  Alert
 } from 'react-native';
 import { useSignUp } from '@clerk/clerk-expo';
 import { Link, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useTheme } from '@/components/ThemeProvider';
 import { MaterialIcons } from '@expo/vector-icons';
+
+// Web-compatible alert
+const showAlert = (title: string, message: string) => {
+  if (Platform.OS === 'web') {
+    window.alert(`${title}: ${message}`);
+  } else {
+    const { Alert } = require('react-native');
+    Alert.alert(title, message);
+  }
+};
 
 export default function SignUpScreen() {
   const { isLoaded, signUp, setActive } = useSignUp();
@@ -25,10 +34,15 @@ export default function SignUpScreen() {
   const [password, setPassword] = React.useState('');
   const [pendingVerification, setPendingVerification] = React.useState(false);
   const [code, setCode] = React.useState('');
+  const [error, setError] = React.useState('');
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   // Handle submission of sign-up form
   const onSignUpPress = async () => {
-    if (!isLoaded) return;
+    if (!isLoaded || isSubmitting) return;
+    
+    setError('');
+    setIsSubmitting(true);
 
     // Start sign-up process using email and password provided
     try {
@@ -47,13 +61,20 @@ export default function SignUpScreen() {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
       console.error(JSON.stringify(err, null, 2));
-      Alert.alert('Error', err.errors?.[0]?.message || 'Failed to sign up');
+      const errorMessage = err.errors?.[0]?.message || 'Failed to sign up';
+      setError(errorMessage);
+      showAlert('Error', errorMessage);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   // Handle submission of verification form
   const onVerifyPress = async () => {
-    if (!isLoaded) return;
+    if (!isLoaded || isSubmitting) return;
+    
+    setError('');
+    setIsSubmitting(true);
 
     try {
       // Use the code the user provided to attempt verification
@@ -70,13 +91,19 @@ export default function SignUpScreen() {
         // If the status is not complete, check why. User may need to
         // complete further steps.
         console.error(JSON.stringify(signUpAttempt, null, 2));
-        Alert.alert('Error', 'Verification incomplete. Please try again.');
+        const errorMessage = 'Verification incomplete. Please try again.';
+        setError(errorMessage);
+        showAlert('Error', errorMessage);
       }
     } catch (err: any) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
       console.error(JSON.stringify(err, null, 2));
-      Alert.alert('Error', err.errors?.[0]?.message || 'Failed to verify');
+      const errorMessage = err.errors?.[0]?.message || 'Failed to verify';
+      setError(errorMessage);
+      showAlert('Error', errorMessage);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -98,13 +125,17 @@ export default function SignUpScreen() {
                 We sent a verification code to {emailAddress}
               </Text>
 
+              {error ? (
+                <Text style={[styles.errorText, { color: theme.error }]}>{error}</Text>
+              ) : null}
+
               <TextInput
                 style={[
                   styles.input,
                   { 
                     backgroundColor: theme.surface,
                     color: theme.textMain,
-                    borderColor: theme.border
+                    borderColor: error ? theme.error : theme.border
                   }
                 ]}
                 value={code}
@@ -116,10 +147,11 @@ export default function SignUpScreen() {
               />
 
               <TouchableOpacity 
-                style={[styles.button, { backgroundColor: theme.primary }]}
+                style={[styles.button, { backgroundColor: theme.primary, opacity: isSubmitting ? 0.7 : 1 }]}
                 onPress={onVerifyPress}
+                disabled={isSubmitting}
               >
-                <Text style={styles.buttonText}>Verify Email</Text>
+                <Text style={styles.buttonText}>{isSubmitting ? 'Verifying...' : 'Verify Email'}</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
@@ -145,13 +177,17 @@ export default function SignUpScreen() {
               Join PetVision to start caring for your furry friend
             </Text>
 
+            {error ? (
+              <Text style={[styles.errorText, { color: theme.error }]}>{error}</Text>
+            ) : null}
+
             <TextInput
               style={[
                 styles.input,
                 { 
                   backgroundColor: theme.surface,
                   color: theme.textMain,
-                  borderColor: theme.border
+                  borderColor: error ? theme.error : theme.border
                 }
               ]}
               autoCapitalize="none"
@@ -169,7 +205,7 @@ export default function SignUpScreen() {
                 { 
                   backgroundColor: theme.surface,
                   color: theme.textMain,
-                  borderColor: theme.border
+                  borderColor: error ? theme.error : theme.border
                 }
               ]}
               value={password}
@@ -181,10 +217,11 @@ export default function SignUpScreen() {
             />
 
             <TouchableOpacity 
-              style={[styles.button, { backgroundColor: theme.primary }]}
+              style={[styles.button, { backgroundColor: theme.primary, opacity: isSubmitting ? 0.7 : 1 }]}
               onPress={onSignUpPress}
+              disabled={isSubmitting}
             >
-              <Text style={styles.buttonText}>Sign Up</Text>
+              <Text style={styles.buttonText}>{isSubmitting ? 'Creating Account...' : 'Sign Up'}</Text>
             </TouchableOpacity>
 
             <View style={styles.footer}>
@@ -232,6 +269,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter_400Regular',
     textAlign: 'center',
     marginBottom: 32,
+  },
+  errorText: {
+    fontSize: 14,
+    fontFamily: 'Inter_400Regular',
+    textAlign: 'center',
+    marginBottom: 16,
+    paddingHorizontal: 16,
   },
   input: {
     width: '100%',

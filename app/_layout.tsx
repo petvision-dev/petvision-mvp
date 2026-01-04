@@ -11,7 +11,7 @@ import {
   Inter_700Bold,
   Inter_800ExtraBold,
 } from '@expo-google-fonts/inter';
-import { ClerkProvider, ClerkLoaded } from '@clerk/clerk-expo';
+import { ClerkProvider, useAuth } from '@clerk/clerk-expo';
 
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -97,18 +97,34 @@ function RootLayoutNav({ fontsLoaded }: { fontsLoaded: boolean }) {
 
   return (
     <ClerkProvider publishableKey={publishableKey}>
-      <ClerkLoaded>
-        <ThemeProvider>
-          <Stack>
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-            <Stack.Screen name="onboarding/pet-profile" options={{ headerShown: false }} />
-            <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-          </Stack>
-        </ThemeProvider>
-      </ClerkLoaded>
+      <ThemeProvider>
+        <ClerkLoadingWrapper />
+      </ThemeProvider>
     </ClerkProvider>
+  );
+}
+
+// Separate component to use Clerk hooks inside ClerkProvider
+function ClerkLoadingWrapper() {
+  const { isLoaded } = useAuth();
+
+  if (!isLoaded) {
+    return (
+      <View style={styles.loadingContainer}>
+        <ActivityIndicator size="large" color="#0df2a6" />
+        <Text style={{ color: '#fff', marginTop: 16 }}>Loading...</Text>
+      </View>
+    );
+  }
+
+  return (
+    <Stack>
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      <Stack.Screen name="onboarding/pet-profile" options={{ headerShown: false }} />
+      <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+    </Stack>
   );
 }
 
