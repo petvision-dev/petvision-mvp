@@ -4,10 +4,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { useTheme } from '@/components/ThemeProvider';
 import { MaterialIcons } from '@expo/vector-icons';
+import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo';
+import { SignOutButton } from '@/components/SignOutButton';
 
 export default function WelcomeScreen() {
   const { theme, isDark } = useTheme();
   const router = useRouter();
+  const { user } = useUser();
 
   return (
     <View style={styles.container}>
@@ -38,38 +41,62 @@ export default function WelcomeScreen() {
         
         {/* Main Content */}
         <View style={styles.mainContent}>
-          <Text style={styles.title}>
-            Hello, {'\n'}
-            <Text style={{ color: theme.primary }}>Furry Friend!</Text>
-          </Text>
-          
-          <Text style={styles.subtitle}>
-            Keep your pet happy and healthy with our smart visual analysis.
-          </Text>
-          
-          {/* Pagination Dots */}
-          <View style={styles.pagination}>
-            <View style={[styles.paginationDotActive, { backgroundColor: theme.primary }]} />
-            <View style={styles.paginationDot} />
-            <View style={styles.paginationDot} />
-          </View>
-          
-          {/* Buttons */}
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity 
-              style={[styles.primaryButton, { backgroundColor: theme.primary }]}
-              onPress={() => router.push('/onboarding/pet-profile')}
-            >
-              <Text style={styles.primaryButtonText}>Get Started</Text>
-            </TouchableOpacity>
+          <SignedIn>
+            <Text style={styles.title}>
+              Welcome back, {'\n'}
+              <Text style={{ color: theme.primary }}>{user?.firstName || 'Friend'}!</Text>
+            </Text>
             
-            <TouchableOpacity 
-              style={styles.secondaryButton}
-              onPress={() => router.push('/auth/login')}
-            >
-              <Text style={styles.secondaryButtonText}>Log In</Text>
-            </TouchableOpacity>
-          </View>
+            <Text style={styles.subtitle}>
+              {user?.emailAddresses[0]?.emailAddress}
+            </Text>
+            
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity 
+                style={[styles.primaryButton, { backgroundColor: theme.primary }]}
+                onPress={() => router.push('/(tabs)')}
+              >
+                <Text style={styles.primaryButtonText}>Go to Dashboard</Text>
+              </TouchableOpacity>
+              
+              <SignOutButton />
+            </View>
+          </SignedIn>
+
+          <SignedOut>
+            <Text style={styles.title}>
+              Hello, {'\n'}
+              <Text style={{ color: theme.primary }}>Furry Friend!</Text>
+            </Text>
+            
+            <Text style={styles.subtitle}>
+              Keep your pet happy and healthy with our smart visual analysis.
+            </Text>
+            
+            {/* Pagination Dots */}
+            <View style={styles.pagination}>
+              <View style={[styles.paginationDotActive, { backgroundColor: theme.primary }]} />
+              <View style={styles.paginationDot} />
+              <View style={styles.paginationDot} />
+            </View>
+            
+            {/* Buttons */}
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity 
+                style={[styles.primaryButton, { backgroundColor: theme.primary }]}
+                onPress={() => router.push('/(auth)/sign-up')}
+              >
+                <Text style={styles.primaryButtonText}>Get Started</Text>
+              </TouchableOpacity>
+              
+              <TouchableOpacity 
+                style={styles.secondaryButton}
+                onPress={() => router.push('/(auth)/sign-in')}
+              >
+                <Text style={styles.secondaryButtonText}>Log In</Text>
+              </TouchableOpacity>
+            </View>
+          </SignedOut>
         </View>
       </View>
     </View>
