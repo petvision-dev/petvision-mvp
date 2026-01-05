@@ -6,599 +6,236 @@
     <meta name="description" content="PetVision - Know Your Pet's Health Before Problems Get Serious. Track symptoms, get AI insights, and stay connected to your vet. All from your phone.">
     <meta name="og:image" content="https://via.placeholder.com/1200x630?text=PetVision+-+Pet+Health+Tracking">
     <title>PetVision - Pet Health Tracking App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #0df2a6;
-            --primary-hover: #0be098;
-            --primary-dark: #0bc488;
-            --background-light: #f5f8f7;
-            --surface-light: #ffffff;
-            --text-main: #0d1c17;
-            --text-secondary: #499c81;
-            --border: #cee8e0;
-            --success: #22c55e;
-            --warning: #f59e0b;
-            --error: #ef4444;
-            
-            --background-dark: #10221c;
-            --surface-dark: #162b24;
-            --text-main-dark: #e8f5f1;
-            --text-secondary-dark: #8fbdb0;
-            --border-dark: #2a4a3f;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-            background-color: var(--background-light);
-            color: var(--text-main);
-            line-height: 1.6;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        body.dark-mode {
-            background-color: var(--background-dark);
-            color: var(--text-main-dark);
-        }
-
-        /* Header/Navigation */
-        header {
-            background-color: var(--surface-light);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-
-        body.dark-mode header {
-            background-color: var(--surface-dark);
-            border-bottom-color: var(--border-dark);
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .nav-right {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-main);
-            transition: transform 0.3s ease;
-        }
-
-        body.dark-mode .theme-toggle {
-            color: var(--text-main-dark);
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .cta-button {
-            background-color: var(--primary);
-            color: var(--text-main);
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(13, 242, 166, 0.3);
-        }
-
-        .cta-button:active {
-            transform: translateY(0);
-        }
-
-        /* Hero Section */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 3rem;
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-        }
-
-        body.dark-mode .hero-content h1 {
-            color: var(--text-main-dark);
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        body.dark-mode .hero-content p {
-            color: var(--text-secondary-dark);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .primary-button {
-            background-color: var(--primary);
-            color: var(--text-main);
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            border-radius: 8px;
-        }
-
-        .secondary-button {
-            background-color: var(--surface-light);
-            color: var(--text-main);
-            border: 2px solid var(--primary);
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            border-radius: 8px;
-        }
-
-        body.dark-mode .secondary-button {
-            background-color: var(--surface-dark);
-            color: var(--text-main-dark);
-        }
-
-        .hero-image {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-image-placeholder {
-            width: 100%;
-            max-width: 400px;
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            box-shadow: 0 20px 60px rgba(13, 242, 166, 0.2);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--text-main);
-            text-align: center;
-        }
-
-        body.dark-mode section h2 {
-            color: var(--text-main-dark);
-        }
-
-        /* Problem Section */
-        .problem {
-            background-color: var(--surface-light);
-            border-radius: 12px;
-        }
-
-        body.dark-mode .problem {
-            background-color: var(--surface-dark);
-        }
-
-        .problem-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .problem-text h3 {
-            color: var(--error);
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .problem-text p {
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-        }
-
-        body.dark-mode .problem-text p {
-            color: var(--text-secondary-dark);
-        }
-
-        .problem-visual {
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(249, 158, 11, 0.1) 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-        }
-
-        /* Solution Section */
-        .solution {
-            text-align: center;
-        }
-
-        .solution-intro {
-            max-width: 800px;
-            margin: 0 auto 3rem;
-        }
-
-        .solution-intro h3 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .solution-intro p {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-        }
-
-        body.dark-mode .solution-intro p {
-            color: var(--text-secondary-dark);
-        }
-
-        /* Features Grid */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background-color: var(--surface-light);
-            border: 2px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        body.dark-mode .feature-card {
-            background-color: var(--surface-dark);
-            border-color: var(--border-dark);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary);
-            box-shadow: 0 12px 24px rgba(13, 242, 166, 0.15);
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            color: var(--text-main);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        body.dark-mode .feature-card h3 {
-            color: var(--text-main-dark);
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        body.dark-mode .feature-card p {
-            color: var(--text-secondary-dark);
-        }
-
-        .so-that {
-            color: var(--primary);
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-
-        /* Social Proof */
-        .social-proof {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--text-main);
-            border-radius: 12px;
-            padding: 3rem;
-            text-align: center;
-        }
-
-        .social-proof h3 {
-            color: var(--text-main);
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-        }
-
-        .testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .testimonial {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .testimonial p {
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background-color: var(--surface-light);
-            border-radius: 12px;
-            text-align: center;
-            padding: 3rem;
-        }
-
-        body.dark-mode .cta-section {
-            background-color: var(--surface-dark);
-        }
-
-        .cta-section h2 {
-            color: var(--text-main);
-            margin-bottom: 1rem;
-        }
-
-        body.dark-mode .cta-section h2 {
-            color: var(--text-main-dark);
-        }
-
-        .cta-section p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        body.dark-mode .cta-section p {
-            color: var(--text-secondary-dark);
-        }
-
-        .cta-large {
-            font-size: 1.2rem;
-            padding: 1.2rem 2.5rem;
-            border-radius: 8px;
-        }
-
-        /* FAQ Section */
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .faq-item {
-            background-color: var(--surface-light);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-
-        body.dark-mode .faq-item {
-            background-color: var(--surface-dark);
-        }
-
-        .faq-question {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-        }
-
-        .faq-answer {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        body.dark-mode .faq-answer {
-            color: var(--text-secondary-dark);
-        }
+        /* Reset & Base */
+        *{box-sizing:border-box;margin:0;padding:0}
+        :root{
+            --bg:#f6fbf8; /* soft tint */
+            --surface:#ffffff;
+            --muted:#6f9f8b;
+            --text:#0d1c17;
+            --accent-1:#0df2a6; /* primary */
+            --accent-2:#16b78f; /* darker */
+            --accent-3:#7ee6c8; /* light */
+            --glass:rgba(255,255,255,0.6);
+            --card-shadow:0 10px 30px rgba(13,242,166,0.12);
+            --card-shadow-strong:0 20px 40px rgba(9,128,95,0.12);
+            --border:#e6f3ec;
+            --radius:16px;
+            --max-width:1200px;
+        }
+        html,body{height:100%}
+        body{
+            font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            background:var(--bg);
+            color:var(--text);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            line-height:1.5;
+            transition:background .25s ease, color .25s ease;
+        }
+        body.dark-mode{
+            --bg:#0f2220;
+            --surface:#0e2a26;
+            --muted:#8fbdb0;
+            --text:#e8f5f1;
+            --card-shadow:0 10px 30px rgba(0,0,0,0.6);
+            --card-shadow-strong:0 20px 40px rgba(0,0,0,0.6);
+            --border:#23463f;
+        }
+
+        /* Layout */
+        .container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+
+        /* Header */
+        header.site-header{
+            position:sticky;top:0;z-index:40;background:linear-gradient(180deg,rgba(255,255,255,0.6),transparent);
+            backdrop-filter:blur(6px);border-bottom:1px solid var(--border);
+        }
+        .site-header .container{display:flex;align-items:center;justify-content:space-between;padding:18px 20px}
+        .brand{display:flex;align-items:center;gap:12px;font-weight:700;color:var(--accent-1);font-size:18px}
+        .brand .mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#052018;font-weight:800}
+        nav.primary{display:flex;gap:20px;align-items:center}
+        nav.primary a{color:var(--muted);text-decoration:none;font-weight:600;padding:8px 10px;border-radius:999px}
+        nav.primary a:hover{color:var(--text);background:rgba(0,0,0,0.02)}
+        .header-actions{display:flex;align-items:center;gap:12px}
+        .btn-pill{background:linear-gradient(90deg,var(--accent-1),var(--accent-3));color:#052018;padding:10px 16px;border-radius:999px;border:none;font-weight:700;cursor:pointer;box-shadow:var(--card-shadow)}
+        .btn-outline{background:transparent;border:1px solid var(--border);padding:8px 12px;border-radius:999px;color:var(--muted);font-weight:600}
+
+        /* Hero - Full-width banner style */
+        .hero-wrap{
+            position:relative;
+            min-height:580px;
+            overflow:hidden;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:url('/assets/images/hero-source.png') center bottom / cover no-repeat;
+        }
+        .hero-wrap::before{
+            content:'';
+            position:absolute;
+            inset:0;
+            background:linear-gradient(180deg,rgba(5,50,40,0.75) 0%,rgba(10,80,65,0.5) 50%,rgba(15,100,80,0.3) 100%);
+            z-index:1;
+        }
+        .hero{
+            position:relative;
+            z-index:2;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            text-align:center;
+            max-width:800px;
+            margin:0 auto;
+            padding:60px 20px 120px;
+        }
+        .hero h1{
+            font-size:48px;
+            line-height:1.1;
+            margin-bottom:20px;
+            color:#ffffff;
+            text-shadow:0 2px 8px rgba(0,0,0,0.3);
+        }
+        .hero p.lead{
+            font-size:20px;
+            color:rgba(255,255,255,0.9);
+            margin-bottom:32px;
+            max-width:600px;
+        }
+        .hero .actions{
+            display:flex;
+            gap:16px;
+            flex-wrap:wrap;
+            justify-content:center;
+        }
+        .hero .btn-primary{
+            background:#d4f5e4;
+            color:#0a4034;
+            padding:14px 28px;
+            border-radius:999px;
+            font-weight:700;
+            font-size:16px;
+            text-decoration:none;
+            border:none;
+            box-shadow:0 4px 16px rgba(0,0,0,0.2);
+            transition:transform 0.2s ease,box-shadow 0.2s ease;
+        }
+        .hero .btn-primary:hover{
+            transform:translateY(-2px);
+            box-shadow:0 6px 20px rgba(0,0,0,0.25);
+        }
+        .hero .btn-secondary{
+            background:rgba(20,60,50,0.8);
+            color:#ffffff;
+            padding:14px 28px;
+            border-radius:999px;
+            font-weight:700;
+            font-size:16px;
+            text-decoration:none;
+            border:1px solid rgba(255,255,255,0.3);
+            box-shadow:0 4px 16px rgba(0,0,0,0.2);
+            transition:transform 0.2s ease,background 0.2s ease;
+        }
+        .hero .btn-secondary:hover{
+            transform:translateY(-2px);
+            background:rgba(30,70,60,0.9);
+        }
+        /* Responsive hero */
+        @media (max-width:1024px){
+            .hero-wrap{min-height:500px}
+            .hero h1{font-size:40px}
+            .hero{padding:50px 20px 100px}
+        }
+        @media (max-width:700px){
+            .site-header .container{flex-direction:column;align-items:flex-start;gap:12px}
+            nav.primary{display:flex;gap:8px;flex-wrap:wrap}
+            .hero-wrap{min-height:450px;background-position:center center}
+            .hero{padding:40px 20px 80px}
+            .hero h1{font-size:28px}
+            .hero p.lead{font-size:16px}
+            .hero .actions{flex-direction:column;width:100%;max-width:280px}
+            .hero .btn-primary,.hero .btn-secondary{width:100%;text-align:center}
+            .features{grid-template-columns:1fr}
+            .testimonials{grid-template-columns:1fr}
+            .stats{flex-direction:column}
+        }
+
+        /* Features */
+        .section{padding:48px 0}
+        .features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:18px}
+        .card{background:var(--surface);border-radius:var(--radius);padding:22px;border:1px solid var(--border);box-shadow:var(--card-shadow);transition:transform .18s ease}
+        .card:hover{transform:translateY(-6px)}
+        .icon-circle{width:56px;height:56px;border-radius:999px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));display:flex;align-items:center;justify-content:center;font-size:22px;color:#052018;margin-bottom:12px}
+        .card h3{margin-bottom:8px}
+        .muted{color:var(--muted)}
+
+        /* Social proof */
+        .social-banner{border-radius:20px;padding:36px;background:linear-gradient(135deg,var(--accent-3),rgba(255,255,255,0.06));margin:24px 0}
+        .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+        .testimonial{background:var(--surface);padding:18px;border-radius:14px;box-shadow:var(--card-shadow);border:1px solid var(--border)}
+        .testimonial p{font-style:italic;color:var(--muted);margin-bottom:10px}
+        .testimonial .who{font-weight:700}
+        .stats{display:flex;gap:18px;margin-top:18px}
+        .stat{background:transparent;border-radius:12px;padding:16px;text-align:center}
+        .stat .num{font-weight:800;font-size:22px}
+
+        /* FAQ / CTA */
+        .faq-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+        .faq-item{background:var(--surface);padding:18px;border-radius:12px;border:1px solid var(--border);box-shadow:var(--card-shadow)}
+        .cta-band{background:linear-gradient(90deg,rgba(14,119,102,0.06),rgba(13,242,166,0.06));padding:30px;border-radius:16px;text-align:center;margin:28px 0}
 
         /* Footer */
-        footer {
-            background-color: var(--surface-light);
-            border-top: 1px solid var(--border);
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-secondary);
-        }
-
-        body.dark-mode footer {
-            background-color: var(--surface-dark);
-            border-top-color: var(--border-dark);
-            color: var(--text-secondary-dark);
-        }
-
-        footer p {
-            margin-bottom: 0.5rem;
-        }
+        footer.site-footer{padding:36px 0;margin-top:20px;border-top:1px solid var(--border);background:transparent}
+        .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px}
+        .social-icons{display:flex;gap:12px}
+        .social-icons a{width:36px;height:36px;border-radius:999px;background:var(--surface);display:flex;align-items:center;justify-content:center;color:var(--muted);box-shadow:var(--card-shadow);text-decoration:none}
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                grid-template-columns: 1fr;
-                padding: 3rem 1rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .problem-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .cta-button, .primary-button, .secondary-button {
-                width: 100%;
-                text-align: center;
-            }
-
-            header {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-right {
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            section h2 {
-                font-size: 1.8rem;
-            }
-
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .testimonials {
-                grid-template-columns: 1fr;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
+        @media (max-width:1024px){
+            .features{grid-template-columns:repeat(2,1fr)}
+            .testimonials{grid-template-columns:repeat(2,1fr)}
+            .faq-grid{grid-template-columns:1fr}
+        }
+        @media (max-width:700px){
+            .footer-inner{flex-direction:column;text-align:center}
         }
 
-        /* Animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+        /* subtle animation */
+        .fade-up{animation:fadeUp .6s ease both}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        section {
-            animation: fadeInUp 0.6s ease-out;
-        }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            🐾 PetVision
-        </div>
-        <div class="nav-right">
-            <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
-                <span id="theme-icon">🌙</span>
-            </button>
-            <a href="https://petvision-mvp.vercel.app" class="cta-button">Open App</a>
+    <header class="site-header">
+        <div class="container">
+            <div class="brand">
+                <div class="mark">🐾</div>
+                <div>PetVision</div>
+            </div>
+            <nav class="primary" aria-label="Main navigation">
+                <a href="#features">Features</a>
+                <a href="#">About</a>
+                <a href="#">Support</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn-outline" id="theme-toggle" aria-label="Toggle dark mode"><span id="theme-icon">🌙</span></button>
+                <a class="btn-pill" href="https://petvision-mvp.vercel.app">Open App</a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Know Your Pet's Health Before Problems Get Serious</h1>
-            <p>Track symptoms, get AI insights, and stay connected to your vet. All from your phone.</p>
-            <div class="hero-buttons">
-                <a href="https://petvision-mvp.vercel.app" class="cta-button primary-button">Start Tracking Free</a>
-                <a href="#features" class="cta-button secondary-button">Learn More</a>
+    <section class="hero-wrap">
+        <div class="hero fade-up">
+            <h1>Revolutionizing Pet Health:<br>Your Partner in Well-being</h1>
+            <p class="lead">Personalized care, real-time monitoring, and AI insights for your pet's happiest, healthiest life.</p>
+            <div class="actions">
+                <a class="btn-primary" href="https://petvision-mvp.vercel.app">Start Your Pet's Journey</a>
+                <a class="btn-secondary" href="#features">Download the App</a>
             </div>
-        </div>
-        <div class="hero-image">
-            <div class="hero-image-placeholder">🐕</div>
         </div>
     </section>
 
@@ -615,193 +252,150 @@
         </div>
     </section>
 
-    <!-- Solution Section -->
-    <section class="solution">
-        <div class="solution-intro">
-            <h3>Introducing PetVision</h3>
-            <p>The pet health app that puts you in control between vet visits. Track your pet's symptoms as they happen. Get instant AI insights. Make confident decisions about your pet's care.</p>
-        </div>
-
-        <div id="features" class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">📋</div>
-                <h3>Symptom Tracker</h3>
-                <p>Log your pet's symptoms in seconds—eating habits, energy levels, anything unusual.</p>
-                <p class="so-that">→ So that you have a complete health history ready for your vet.</p>
+    <section class="section container">
+            <h2 style="text-align:center">Your Pet's Personalized Health Plan</h2>
+            <div class="features fade-up">
+                <div class="card">
+                    <div class="icon-circle">📋</div>
+                    <h3>Symptom Tracker</h3>
+                    <p class="muted">Log your pet's symptoms in seconds—eating habits, energy levels, anything unusual.</p>
+                    <p class="so-that">→ So that you have a complete health history ready for your vet.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-circle">🤖</div>
+                    <h3>AI Health Analysis</h3>
+                    <p class="muted">Our AI reviews symptoms and gives you instant insights about what might be happening.</p>
+                    <p class="so-that">→ So that you know if something needs urgent attention.</p>
+                </div>
+                <div class="card">
+                    <div class="icon-circle">🐾</div>
+                    <h3>Pet Profiles</h3>
+                    <p class="muted">Create detailed profiles for each pet with photos, age, breed, and medical history.</p>
+                    <p class="so-that">→ So that your vet has complete context every time.</p>
+                </div>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🤖</div>
-                <h3>AI Health Analysis</h3>
-                <p>Our AI reviews symptoms and gives you instant insights about what might be happening.</p>
-                <p class="so-that">→ So that you know if something needs urgent attention.</p>
+            <div style="margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center" class="fade-up">
+                <img src="https://via.placeholder.com/720x260?text=Pets+Photo" alt="pets" style="width:100%;border-radius:14px;box-shadow:var(--card-shadow)">
+                <div>
+                    <h3>Real-time Monitoring & AI Insights</h3>
+                    <p class="muted">24/7 Vitals Monitoring<br>AI Symptom Analysis<br>Instant Vet Connect</p>
+                    <p style="margin-top:12px;color:var(--muted)">See your pet's health status at a glance and get the right next step suggestions when something is off.</p>
+                </div>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">🐾</div>
-                <h3>Pet Profiles</h3>
-                <p>Create detailed profiles for each pet with photos, age, breed, and medical history.</p>
-                <p class="so-that">→ So that your vet has complete context every time.</p>
+        </section>
+
+        <section class="section container">
+            <div class="social-banner fade-up">
+                <h3 style="margin:0;text-align:center;color:var(--text);">Trusted by Pet Owners</h3>
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <p>"I noticed my cat was acting weird. Used PetVision to track it. Turned out she had early signs of kidney issues. Caught it because I had the data ready for my vet."</p>
+                        <div class="who">— Maria R., Cat Owner</div>
+                    </div>
+                    <div class="testimonial">
+                        <p>"Instead of panicking at 10 PM on a weekend, I logged my dog's symptoms and got peace of mind. Knew exactly what to tell the vet on Monday."</p>
+                        <div class="who">— James C., Dog Owner</div>
+                    </div>
+                    <div class="testimonial">
+                        <p>"Finally, a way to track my pet's health without losing sleep. This app gives me confidence in my decisions."</p>
+                        <div class="who">— Sarah K., Pet Parent</div>
+                    </div>
+                </div>
+                <div class="stats" style="justify-content:space-around">
+                    <div class="stat"><div class="num">5 days</div><div class="muted">Earlier issue detection</div></div>
+                    <div class="stat"><div class="num">90%</div><div class="muted">More confident decisions</div></div>
+                    <div class="stat"><div class="num">100%</div><div class="muted">Private & encrypted</div></div>
+                </div>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">📚</div>
-                <h3>Educational Resources</h3>
-                <p>Access articles and guides about pet health conditions and wellness tips.</p>
-                <p class="so-that">→ So that you understand what's happening with your pet.</p>
+            <div style="margin-top:20px" class="fade-up">
+                <h2 style="text-align:center">Frequently Asked Questions</h2>
+                <div class="faq-grid" style="margin-top:14px">
+                    <div class="faq-item">
+                        <div class="faq-question">How accurate is the AI?</div>
+                        <div class="faq-answer">Our AI is trained on veterinary data and catches patterns you might miss. But it's a starting point for you and your vet—never a replacement. When in doubt, always call your vet.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Can I use this instead of a vet?</div>
+                        <div class="faq-answer">No. This helps you communicate better with your vet. Your vet is the expert. We help you be more prepared.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What pets are supported?</div>
+                        <div class="faq-answer">Dogs and cats in this version. We're expanding to rabbits, birds, and small animals soon.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Is my pet's data private?</div>
+                        <div class="faq-answer">Yes. Your pet's health information is encrypted. You control who sees it. We never sell your data.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Can I track multiple pets?</div>
+                        <div class="faq-answer">Yes. You can track multiple pets with completely separate profiles and health histories.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Do I need a credit card?</div>
+                        <div class="faq-answer">No. Start free with no credit card required. No hidden fees. Cancel anytime.</div>
+                    </div>
+                </div>
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">📊</div>
-                <h3>Health Dashboard</h3>
-                <p>See your pet's health status at a glance with quick summaries and insights.</p>
-                <p class="so-that">→ So that you catch problems early instead of emergencies.</p>
+            <div class="cta-band" style="margin-top:20px">
+                <h3 style="margin:0">Don't Wait for Emergencies. Start Protecting Your Pet Now.</h3>
+                <p style="margin:8px 0 16px;color:var(--muted)">Join pet owners who are catching health issues early and making confident decisions about their pet's care.</p>
+                <a class="btn-pill" href="https://petvision-mvp.vercel.app">Start Tracking Your Pet's Health Free</a>
+                <p style="margin-top:12px;font-size:13px;color:var(--muted);">No credit card required. No limits. No complicated signup.</p>
             </div>
+        </section>
 
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3>Privacy First</h3>
-                <p>Your pet's health data is encrypted and under your control. We never sell your data.</p>
-                <p class="so-that">→ So that you trust us with your pet's information.</p>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div style="display:flex;flex-direction:column;gap:8px">
+                <div style="font-weight:700">PetVision</div>
+                <div style="color:var(--muted);font-size:13px">&copy; 2026 PetVision. All rights reserved.</div>
+                <div style="color:var(--muted);font-size:13px">Made with 🐾 for pet owners everywhere.</div>
+                <div style="margin-top:6px"><a href="mailto:support@petvision.app" style="color:var(--accent-1);text-decoration:none">support@petvision.app</a></div>
             </div>
-        </div>
-    </section>
-
-    <!-- Social Proof Section -->
-    <section class="social-proof">
-        <h3>Trusted by Pet Owners</h3>
-        
-        <div class="testimonials">
-            <div class="testimonial">
-                <p>"I noticed my cat was acting weird. Used PetVision to track it. Turned out she had early signs of kidney issues. Caught it because I had the data ready for my vet."</p>
-                <div class="testimonial-author">— Maria R., Cat Owner</div>
-            </div>
-
-            <div class="testimonial">
-                <p>"Instead of panicking at 10 PM on a weekend, I logged my dog's symptoms and got peace of mind. Knew exactly what to tell the vet on Monday."</p>
-                <div class="testimonial-author">— James C., Dog Owner</div>
-            </div>
-
-            <div class="testimonial">
-                <p>"Finally, a way to track my pet's health without losing sleep. This app gives me confidence in my decisions."</p>
-                <div class="testimonial-author">— Sarah K., Pet Parent</div>
-            </div>
-        </div>
-
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-number">5 days</div>
-                <div class="stat-label">Earlier issue detection</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">90%</div>
-                <div class="stat-label">More confident decisions</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Private & encrypted</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section>
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-grid">
-            <div class="faq-item">
-                <div class="faq-question">How accurate is the AI?</div>
-                <div class="faq-answer">Our AI is trained on veterinary data and catches patterns you might miss. But it's a starting point for you and your vet—never a replacement. When in doubt, always call your vet.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Can I use this instead of a vet?</div>
-                <div class="faq-answer">No. This helps you communicate better with your vet. Your vet is the expert. We help you be more prepared.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">What pets are supported?</div>
-                <div class="faq-answer">Dogs and cats in this version. We're expanding to rabbits, birds, and small animals soon.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Is my pet's data private?</div>
-                <div class="faq-answer">Yes. Your pet's health information is encrypted. You control who sees it. We never sell your data.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Can I track multiple pets?</div>
-                <div class="faq-answer">Yes. You can track multiple pets with completely separate profiles and health histories.</div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">Do I need a credit card?</div>
-                <div class="faq-answer">No. Start free with no credit card required. No hidden fees. Cancel anytime.</div>
+            <div style="text-align:right">
+                <div style="display:flex;gap:12px;justify-content:flex-end;align-items:center">
+                    <nav style="display:flex;gap:12px">
+                        <a href="#">Features</a>
+                        <a href="#">About Us</a>
+                        <a href="#">Support</a>
+                        <a href="#">Blog</a>
+                    </nav>
+                    <div class="social-icons" aria-hidden="true">
+                        <a href="#" title="Twitter">T</a>
+                        <a href="#" title="YouTube">Y</a>
+                        <a href="#" title="Instagram">I</a>
+                    </div>
+                </div>
+                <div style="margin-top:8px;color:var(--muted);font-size:12px">© 2026 PetVision. All rights reserved.</div>
             </div>
         </div>
-    </section>
-
-    <!-- Final CTA Section -->
-    <section class="cta-section">
-        <h2>Don't Wait for Emergencies. Start Protecting Your Pet Now.</h2>
-        <p>Join pet owners who are catching health issues early and making confident decisions about their pet's care.</p>
-        <a href="https://petvision-mvp.vercel.app" class="cta-button cta-large">Start Tracking Your Pet's Health Free</a>
-        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">No credit card required. No limits. No complicated signup.</p>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 PetVision. All rights reserved.</p>
-        <p>Made with 🐾 for pet owners everywhere.</p>
-        <p><a href="mailto:support@petvision.app" style="color: var(--primary); text-decoration: none;">support@petvision.app</a></p>
     </footer>
 
     <script>
-        // Dark mode toggle
-        function toggleTheme() {
-            const body = document.body;
-            const icon = document.getElementById('theme-icon');
-            body.classList.toggle('dark-mode');
-            
-            // Store preference
-            if (body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-                icon.textContent = '☀️';
-            } else {
-                localStorage.setItem('theme', 'light');
-                icon.textContent = '🌙';
-            }
+        // Theme toggle (preserve existing behavior)
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        function applyTheme(t){
+            if(t==='dark'){document.body.classList.add('dark-mode');themeIcon.textContent='☀️'}
+            else {document.body.classList.remove('dark-mode');themeIcon.textContent='🌙'}
         }
-
-        // Load theme preference on page load
-        window.addEventListener('load', function() {
+        themeToggle.addEventListener('click',function(){
+            document.body.classList.toggle('dark-mode');
+            if(document.body.classList.contains('dark-mode')){localStorage.setItem('theme','dark');themeIcon.textContent='☀️'}
+            else{localStorage.setItem('theme','light');themeIcon.textContent='🌙'}
+        });
+        window.addEventListener('load',function(){
             const theme = localStorage.getItem('theme');
-            const icon = document.getElementById('theme-icon');
-            
-            if (theme === 'dark') {
-                document.body.classList.add('dark-mode');
-                icon.textContent = '☀️';
-            } else if (theme === 'light') {
-                document.body.classList.remove('dark-mode');
-                icon.textContent = '🌙';
-            } else {
-                // Use system preference
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    document.body.classList.add('dark-mode');
-                    icon.textContent = '☀️';
-                }
-            }
+            if(theme){applyTheme(theme)}
+            else if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){applyTheme('dark')}
         });
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
+        // Smooth anchor scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href');if(href.length>1){e.preventDefault();const t=document.querySelector(href);if(t)t.scrollIntoView({behavior:'smooth'});}})});
     </script>
 </body>
 </html>
