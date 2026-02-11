@@ -1,0 +1,85 @@
+---
+service:
+  name: petvision-full
+  image: petvision-backend:latest
+  args:
+    - node
+    - src/index.js
+  env:
+    - DATABASE_URL=postgres://petvision:${DATABASE_PASSWORD}@petvision-db:5432/petvision
+    - NODE_ENV=production
+    - JWT_SECRET=${JWT_SECRET}
+    - PORT=3000
+    - ALLOWED_ORIGINS=https://petvision.vercel.app,https://yourdomain.com
+  expose:
+    - port: 3000
+      as: 3000
+      to:
+        - global: true
+          proto: tcp
+  profiles:
+    compute:
+      petvision-api:
+        resources:
+          cpu:
+            units: 1
+          memory:
+            size: 1Gi
+          storage:
+            - name: logs
+              size: 2Gi
+              location: root
+        placement:
+          akash:
+            pricing:
+              akash:
+                denom: uakt
+                amount: 25000
+            signedBy:
+              anyOf:
+                - "akash1365yvmc4s7awdyj3n2au7y040juhqs3936v"
+                - "akash13slrr8v2a6j44m45y7hmlz3zrjz4n7p4m"
+
+service:
+  name: petvision-db
+  image: postgres:15-alpine
+  args:
+    - postgres
+    - -c
+    - max_connections=200
+    - -c
+    - shared_buffers=256MB
+    - -c
+    - effective_cache_size=1GB
+  env:
+    - POSTGRES_USER=petvision
+    - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    - POSTGRES_DB=petvision
+  expose:
+    - port: 5432
+      as: 5432
+      to:
+        - global: true
+          proto: tcp
+  profiles:
+    compute:
+      petvision-db:
+        resources:
+          cpu:
+            units: 1
+          memory:
+            size: 2Gi
+          storage:
+            - name: db-data
+              size: 20Gi
+              location: root
+        placement:
+          akash:
+            pricing:
+              akash:
+                denom: uakt
+                amount: 35000
+            signedBy:
+              anyOf:
+                - "akash1365yvmc4s7awdyj3n2au7y040juhqs3936v"
+                - "akash13slrr8v2a6j44m45y7hmlz3zrjz4n7p4m"
