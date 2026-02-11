@@ -1,0 +1,136 @@
+# PetVision Social Media - Image Generation Prompts
+
+==================================================
+
+## Twitter/X Posts
+
+### 1. Problem Agitation
+**Prompt:**
+Twitter post graphic showing frustrated pet owner looking at phone late at night, worried sick dog in background. Dark moody lighting. Text overlay areas: "It's 2 AM. Your dog won't eat. Do you call the vet... or wait?" Bottom shows PetVision app icon with "Get peace of mind" text. Dark theme, emotional storytelling.
+
+**Style:** Emotional storytelling, dark moody atmosphere, relatable problem scenario.
+**Aspect Ratio:** 16:9 (landscape) or 1:1 (square)
+**Usage:** Problem-awareness tweets, relatable content, engagement posts.
+
+---
+
+### 2. Solution Reveal
+**Prompt:**
+Twitter post showing relieved pet owner using PetVision app on phone. Screen shows "No issues detected" with green checkmark. Happy golden retriever in background, tail wagging. Bright lighting, hopeful atmosphere. Text overlay: "5 minutes. That's all it took to stop worrying." Green #0df2a6 accents.
+
+**Style:** Solution reveal, bright hopeful, clean product demonstration.
+**Aspect Ratio:** 16:9 (landscape) or 1:1 (square)
+**Usage:** Product reveal, benefit showcase, testimonial-style posts.
+
+---
+
+### 3. Stats Highlight
+**Prompt:**
+Twitter infographic graphic. Large number "92" in gradient green #0df2a6 with "wellness score" text below. Smaller text "Before PetVision: 68" in gray. Arrow pointing up showing +24 improvement. Clean minimal design, white background. Professional data visualization.
+
+**Style:** Data visualization, clean minimal, impactful stat presentation.
+**Aspect Ratio:** 16:9 (landscape) or 1:1 (square)
+**Usage:** Success metrics, data-driven posts, result showcases.
+
+---
+
+### 4. Thread Starter
+**Prompt:**
+Twitter thread header image showing PetVision logo with stylized paw print. Bold headline "5 Ways PetVision Caught Issues Before They Got Serious". Grid of 5 icons below: thermometer, camera, calendar, alert bell, graph. Green brand colors #0df2a6 on white background. Clean typography, thread announcement style.
+
+**Style:** Thread announcement, numbered list preview, clean iconography.
+**Aspect Ratio:** 16:9 (landscape)
+**Usage:** Thread starters, content series announcements, educational posts.
+
+
+## Instagram Posts
+
+### 1. Story Template (Top Screen)
+**Prompt:**
+Instagram story 1080x1920 vertical format. Top half shows split screen - left worried face with question mark, right happy face with checkmark. Bold text "Before vs After" with green arrow. Bottom half shows PetVision app screenshot. Animated swipe-up indicator. Clean gradient background from #10221c to #0df2a6. Modern story template.
+
+**Style:** Instagram story, vertical format, swipe-up interaction, split comparison.
+**Aspect Ratio:** 9:16 (vertical)
+**Usage:** Instagram stories, engagement, product comparison.
+
+---
+
+### 2. Carousal Post (Multiple Screens)
+**Prompt:**
+Instagram carousal post showing 5 PetVision screens in horizontal scroll: 1) Symptom tracking grid, 2) AI analysis scanning, 3) Wellness score dashboard, 4) Health history timeline, 5) Educational article card. Clean white background with subtle green accents. "Swipe to see features" arrow at bottom. Product showcase style.
+
+**Style:** Carousal post, multi-screen showcase, feature walkthrough.
+**Aspect Ratio:** 1:1 (square) or 4:5 (portrait)
+**Usage:** Feature showcase, app tour, Instagram carousals.
+
+---
+### 3. Reel/Video Thumbnail
+**Prompt:**
+Instagram Reel thumbnail showing pet owner filming their dog with smartphone. Dog looking cute and happy, head tilted. Phone screen shows PetVision AI interface with scanning effect. Bold text "Watch me check Buddy's health" in white overlay. Green #0df2a6 play button. Authentic lifestyle photography.
+****Style:** Video thumbnail, authentic moment, call-to-action focus.
+**Aspect Ratio:** 9:16 (vertical)
+**Usage:** Instagram Reels, TikTok, YouTube Shorts thumbnails.
+---
+
+### 4. Highlight Cover
+**Prompt:**
+Instagram Highlight cover showing PetVision branding. Central green paw print with health cross inside. Circular gradient border from #0df2a6 to transparent. Text "HEALTH TIPS" in white with subtle shadow. Dark green #10221c background. Minimal clean design, Instagram Highlight style.
+****Style:** Highlight cover, circular design, brand-focused minimal.
+**Aspect Ratio:** 9:16 (vertical)
+**Usage:** Instagram Highlights, saved content, category covers.
+
+
+## LinkedIn Posts
+
+### 1. Professional Product Shot
+**Prompt:**
+LinkedIn banner showing professional PetVision app presentation. Clean white background with green gradient #0df2a6 left edge. Central smartphone mockup shows sophisticated dashboard interface. Text overlay: "AI-Powered Pet Health Management" with smaller subtitle "Preventive care, early detection, data-driven insights". Clean corporate design, trustworthy aesthetic.
+**Style:** Professional product shot, clean corporate, B2B focused.
+**Aspect Ratio:** 16:9 (landscape)
+**Usage:** LinkedIn feed, professional network, B2B marketing.
+
+---
+
+### 2. Value Proposition Graphic
+**Prompt:**
+LinkedIn infographic explaining PetVision ROI. Three-column comparison:
+- Column 1: "Without PetVision" - shows worried owner, question mark, vet visit illustration, red X icon
+- Column 2: "With PetVision" - shows confident owner, smartphone with app, green checkmark, home illustration
+- Column 3: "Result" - shows "5 days earlier detection", "90% more confident", "$500 saved in vet bills" with green numbers
+Clean white background, professional infographic style.
+**Style:** B2B infographic, clear comparison, data-driven value.
+**Aspect Ratio:** 16:9 (landscape)
+**Usage:** LinkedIn case study, value proposition, B2B education.
+---
+
+### 3. Tech Innovation Banner
+**Prompt:**
+LinkedIn tech showcase banner showing PetVision AI capabilities. Smartphone with dog face photo has glowing green scanning lines around eyes and nose. Side panel shows floating health insight cards with AI icons. Background has subtle neural network pattern in dark green #10221c. Text: "Computer Vision for Pet Health" with subtitle "Detect issues before they're visible to the human eye". Futuristic but professional.
+**Style:** AI/tech showcase, computer vision visualization, innovative B2B.
+**Aspect Ratio:** 16:9 (landscape)
+**Usage:** Technology blog posts, AI showcase, innovation announcements.
+
+
+## TikTok/Shorts Content
+
+### 1. Hook Video Thumbnail
+**Prompt:**
+TikTok thumbnail showing extreme close-up of dog eye with subtle AI scanning overlay. Bold text in red: "Your dog's trying to tell you something" with smaller green text "PetVision can translate" below. Dramatic lighting, eye-catching composition. Viral thumbnail style.
+**Style:** Viral thumbnail, dramatic hook, emotional urgency.
+**Aspect Ratio:** 9:16 (vertical)
+**Usage:** TikTok, Shorts, viral content hooks.
+---
+
+### 2. Before/After Reveal
+**Prompt:**
+Split-screen vertical image for TikTok reveal. Top half shows concerned pet owner holding confused dog with "?" text. Bottom half shows happy owner using PetVision app with "Problem Solved" in green #0df2a6. Dramatic lighting difference - worried in shadows, happy in light. Swipe transition effect.
+**Style:** Before/after reveal, dramatic transformation, TikTok format.
+**Aspect Ratio:** 9:16 (vertical)
+**Usage:** TikTok, Shorts, transformation content.
+---
+### 3. ASMR-Style Thumbnail
+**Prompt:**
+ASMR-style thumbnail showing close-up of pet owner using PetVision app on phone. Soft warm lighting, satisfying UI interactions visible - gentle taps, smooth scrolling. Golden retriever visible in background, sleeping peacefully. Calming aesthetic, satisfying content style. Green #0df2a6 app accents.
+**Style:** ASMR aesthetic, calming, satisfying, cozy atmosphere.
+**Aspect Ratio:** 9:16 (vertical)
+**Usage:** ASMR content, calming videos, satisfying demos.

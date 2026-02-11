@@ -1,0 +1,40 @@
+---
+service:
+  name: petvision-pwa
+  env:
+    - name: NODE_ENV
+      value: production
+  expose:
+    - port: 80
+      as: 80
+      to:
+        - global: true
+  image:
+    type: docker
+    registry: docker.io
+    name: petvision/petvision-pwa
+    tag: latest
+  replicas: 1
+profiles:
+  compute:
+    petvision:
+      resources:
+        cpu:
+          units: 0.5
+        memory:
+          size: 512Mi
+        storage:
+          size: 512Mi
+  placement:
+    akash:
+      attributes:
+        host: akash
+        capabilities:
+          - compatibility: attribute
+        features:
+          - "dedicated: false"
+          - "nested-virtualization: false"
+      signedBy:
+        anyOf:
+          - "akash1365yvmc4s7awdyj3n2uh7c96ctkn7mdq"
+          - "akash18vl5h7z3k4j6a0t3p8f8y5m9n7a3q9r0"

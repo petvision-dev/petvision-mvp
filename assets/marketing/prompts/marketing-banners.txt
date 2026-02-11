@@ -1,0 +1,72 @@
+# PetVision Marketing Banners - Image Generation Prompts
+
+==================================================
+
+## 1. Main Landing Page Hero
+**Prompt:**
+Professional lifestyle photograph for PetVision app landing page hero section. Happy young woman (25-30) sitting on couch with golden retriever dog sitting next to her. She holds smartphone showing PetVision app with green wellness score visible. Warm natural lighting from window, cozy living room setting, plants in background. Woman smiling at dog, looking happy and relaxed. Composition shows app in hand, dog looking at camera. High quality professional photography, lifestyle brand aesthetic, trustworthy atmosphere.
+
+**Style:** Professional lifestyle photography, warm natural lighting, authentic happiness, premium brand feel.
+**Aspect Ratio:** 16:9 (landscape)
+**Usage:** Website hero, landing page main banner, marketing campaigns.
+---
+
+## 2. App Store Feature Graphic
+**Prompt:**
+PetVision app feature graphic showing three mobile phone mockups in a row. Left phone shows home dashboard with 92/100 wellness score. Middle phone shows symptom tracker with colorful category icons. Right phone shows AI health analysis screen with dog photo. Clean white background with subtle green gradient #0df2a6 to transparent. Modern minimalist design, high quality app screenshots, professional product photography.
+
+**Style:** Clean product photography, app mockup style, minimalist, modern tech aesthetic.
+**Aspect Ratio:** 16:9 (landscape)
+**Usage:** App store screenshots, feature showcase, marketing materials.
+---
+
+## 3. "Why PetVision?" Banner
+**Prompt:**
+Infographic banner explaining PetVision value proposition. Left side shows worried pet owner looking at sick dog with question mark. Right side shows happy owner using PetVision app with confident thumbs up. Center arrow transitions between states with bright green #0df2a6. Text overlay areas for "Detect Problems Early", "Track Symptoms", "Get AI Insights". Clean white background with modern flat design.
+****Style:** Modern infographic, clear before/after comparison, flat design, green brand colors.
+**Aspect Ratio:** 16:9 (landscape)
+**Usage:** Marketing emails, landing page section, social media posts.
+---
+
+## 4. "5 Days Earlier" Stats Banner
+**Prompt:**
+Marketing banner highlighting PetVision value statistic. Large bold text "5 DAYS" in gradient green #0df2a6 to #16b78f. Smaller text "EARLIER ISSUE DETECTION" below. Background shows subtle calendar icon or clock element. Clean white background with modern typography. Minimalist design, data visualization style.
+
+**Style:** Data visualization, clean typography, modern minimal, bold stat presentation.
+**Aspect Ratio:** 16:9 (landscape)
+**Usage:** Email headers, landing page statistics section, social media graphics.
+---
+
+## 5. Trusted by Pet Owners Banner
+**Prompt:**
+Social proof banner for PetVision website. Five circular profile photos of diverse pet owners with their pets: 1) young woman with golden retriever, 2) older man with cat, 3) teen with poodle, 4) couple with two dogs, 5) young man with beagle. Each profile has 5-star rating icon below in green #0df2a6. Green header bar with text "TRUSTED BY 1,000+ PET OWNERS". Clean white background, professional testimonial style.
+
+**Style:** Professional testimonial grid, clean circular avatars, trustworthy social proof.
+**Aspect Ratio:** 16:9 (landscape)
+**Usage:** Trust signals section, marketing materials, landing page proof.
+---
+
+## 6. AI-Powered Feature Highlight
+**Prompt:**
+Tech-focused banner showcasing PetVision AI capabilities. Central smartphone shows dog face with scanning animation effect - green scanning lines, glowing dots around eyes, data overlay showing health metrics. Background shows subtle neural network or AI circuit pattern in dark green #10221c. Text areas for "AI SYMPTOM ANALYSIS", "SKIN CONDITION DETECTION", "EYE HEALTH CHECKING". Futuristic but approachable design, green neon accents.
+
+**Style:** AI/tech showcase, scanning visualization, futuristic modern, dark theme with neon.
+**Aspect Ratio:** 16:9 (landscape)
+**Usage:** Feature highlight, technology showcase, tech blog graphics.
+---
+
+## 7. PWA Installable Banner
+**Prompt:**
+Progressive Web App install feature banner. Central smartphone shows PetVision app with green "+ Add to Home Screen" button. Background shows simple grid pattern in light mint #f5f8f. Arrow pointing to app interface. Text "INSTALL LIKE A NATIVE APP" in green #0df2a6. Clean PWA-focused design, simple and clear.
+****Style:** PWA showcase, simple clear design, install prompt visualization.
+**Aspect Ratio:** 16:9 (landscape)
+**Usage:** PWA marketing, app install guides, landing page features.
+---
+
+## 8. Dark Mode Toggle Banner
+**Prompt:**
+Feature banner showing PetVision dark mode. Split screen comparison - left half light mode with bright white background and green text, right half dark mode with #10221c background and mint #e8f5f1 text. Central toggle switch icon transitioning between modes. Clean modern design, subtle shadows, app interface visible in both themes.
+
+**Style:** Feature comparison, split-screen design, theme showcase.
+**Aspect Ratio:** 16:9 (landscape)
+**Usage:** Feature highlight, theme marketing, UI showcase.

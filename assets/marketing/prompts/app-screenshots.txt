@@ -1,0 +1,59 @@
+# PetVision App Screenshots - Image Generation Prompts
+
+==================================================
+
+## 1. Home Dashboard
+**Prompt:**
+PetVision mobile app home screen showing pet wellness dashboard. Center card displays golden retriever profile photo with 92/100 wellness score in large green text #0df2a6. Below shows "How is Bella feeling?" header with quick action buttons for weight, skin, mood, and stool tracking using Material Icons. Bottom shows activity feed with recent health entries. Modern mobile UI with dark green background #10221c, clean white text, rounded cards with subtle shadows.
+
+**Style:** Mobile app screenshot, iPhone 14 Pro frame or similar, realistic UI elements, clean modern design.
+**Aspect Ratio:** 9:19.5 (portrait)
+**Usage:** App store screenshots, website hero, marketing materials.
+
+---
+
+## 2. Symptom Tracker Screen
+**Prompt:**
+PetVision symptom tracker mobile screen. Top section shows dog photo with "How is Buddy feeling?" header. Grid of 4 tracking cards: Weight (scale icon), Skin (spa icon), Mood (smile icon), Stool (water drop icon) - each with circular green button #0df2a6 and white label. Bottom shows recent health history timeline with color-coded severity indicators. Dark mode interface with subtle gradient background.
+
+**Style:** Mobile app screenshot, clear UI hierarchy, intuitive iconography, dark theme.
+**Aspect Ratio:** 9:19.5 (portrait)
+**Usage:** Feature showcase, tutorials, documentation.
+
+---
+
+## 3. AI Health Analysis Screen
+**Prompt:**
+PetVision AI camera analysis screen showing dog photo upload interface. Large central area shows golden retriever face with animated scanning overlay effect - subtle green scanning lines and glowing dots around eyes and nose. Bottom displays "Analyzing..." progress bar with 75% complete in bright green #0df2a6 text. Side panel shows predicted health insights cards: "Skin Condition: Healthy" with green checkmark, "Eyes: Clear" with green checkmark. Futuristic AI interface with dark background, neon green accents.
+
+**Style:** Mobile app screenshot, AI scanning visualization, futuristic but approachable design.
+**Aspect Ratio:** 9:19.5 (portrait)
+**Usage:** Feature highlight, marketing materials, tech showcase.
+
+---
+
+## 4. Pet Profile Setup Screen
+**Prompt:**
+PetVision pet profile creation screen. Large circular photo upload placeholder with dashed border, centered paw print icon. Below shows form fields: "What's their name?" text input, species selection grid (Dog, Cat, Other emojis), breed search field, birthday input field. Green "Save Profile" button at bottom with arrow icon. Clean white background with minimal green accents.
+
+**Style:** Mobile app screenshot, onboarding flow, friendly and inviting design.
+**Aspect Ratio:** 9:19.5 (portrait)
+**Usage:** App store screenshots, onboarding materials.
+---
+
+## 5. Educational Resources Screen
+**Prompt:**
+PetVision health library screen showing educational articles. Hero section features dog health article with "5 Signs of Dehydration" headline and dog drinking water photo. Below shows horizontal scrollable article cards: "Understanding Flea Prevention" with tick icon, "Chocolate Toxicity" with warning icon, "Socializing Your Puppy" with paw icon. Green "Featured" badge on hero article. Clean light interface with green accent colors.
+
+**Style:** Mobile app screenshot, content-focused layout, card-based design.
+**Aspect Ratio:** 9:19.5 (portrait)
+**Usage:** Feature showcase, content marketing.
+---
+
+## 6. Profile Screen
+**Prompt:**
+PetVision user profile screen. Header shows "Profile" with settings gear icon. Card displays user avatar with name "Jessica Smith" and email. Stats row shows 2 Pets, 12 Health Checks, 3 Reminders in green numbers. Menu list with icons: My Pets, Health History, Reminders, My Vets, Settings, Help & Support. Clean interface with card-based sections.
+
+**Style:** Mobile app screenshot, settings page design, organized layout.
+**Aspect Ratio:** 9:19.5 (portrait)
+**Usage:** App store screenshots, documentation.
